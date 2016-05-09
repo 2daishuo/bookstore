@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <filter>
+  <filter-name>CharacterEncodingFilter</filter-name>
+  <filter-class>cn.itcast.bookstore.web.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+  <filter-name>HtmlFilter</filter-name>
+  <filter-class>cn.itcast.bookstore.web.filter.HtmlFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    
+    <filter-name>HtmlFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    
+  <servlet>
+    <servlet-name>CategotyServlet</servlet-name>
+    <servlet-class>cn.itcast.bookstore.web.manager.CategotyServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>cn.itcast.bookstore.web.manager.UserServlet</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>CategotyServlet</servlet-name>
+    <url-pattern>/manager/CategoryServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/client/UserServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+
+</web-app>
