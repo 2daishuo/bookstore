@@ -2,6 +2,7 @@ package cn.itcast.bookstore.dao;
 
 import java.util.List;
 
+import cn.itcast.bookstore.domain.Book;
 import cn.itcast.bookstore.domain.Category;
 
 public interface CategoryDao {
@@ -11,5 +12,7 @@ public interface CategoryDao {
 	public abstract Category find(String id);
 
 	public abstract List<Category> getAll();
+
+	public abstract void add(Book book);
 
 }

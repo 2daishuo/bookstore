@@ -55,7 +55,7 @@ public class CategotyServlet extends HttpServlet {
 		BusinessServiceImpl service = new BusinessServiceImpl();
 		List<Category> categorys = service.getAllCategory();
 		request.setAttribute("categorys", categorys);
-		request.getRequestDispatcher("/manager/listcategory.jsp").forward(request, response);
+		request.getRequestDispatcher("/jsps/manager/listcategory.jsp").forward(request, response);
 		
 	}
 

@@ -14,10 +14,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <a href="#" target="right">分类管理</a>
-   <a href="${pageContext.request.contextPath}/jsps/manager/addcategory.jsp"target="right">添加分类</a>
-   
+   <a href="#" target="right">分类管理</a><br/><br/>
+   <a href="${pageContext.request.contextPath}/jsps/manager/addcategory.jsp" target="right">添加分类</a>
+   <br/><br/>
+   <a href="${pageContext.request.contextPath}/manager/CategoryServlet?method=listall" target="right">查看分类</a>
+   <br/><br/>
    <a href="#" target="right">图书管理</a>
+   <br/><br/>
+    <a href="${pageContext.request.contextPath}/manager/BookServlet?method=addUI" target="right">添加图书</a>
    <a href="#" target="right">订单管理</a>
    
    

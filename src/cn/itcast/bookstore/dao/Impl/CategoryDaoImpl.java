@@ -7,6 +7,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import cn.itcast.bookstore.dao.CategoryDao;
+import cn.itcast.bookstore.domain.Book;
 import cn.itcast.bookstore.domain.Category;
 import cn.itcast.bookstore.utils.JdbcUtils;
 
@@ -44,6 +45,13 @@ public class CategoryDaoImpl implements CategoryDao {
 		}catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+
+	@Override
+	public void add(Book book) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
