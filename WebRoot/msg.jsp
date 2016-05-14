@@ -13,7 +13,6 @@
 </head>
 
 <body>
-	asdfasdfasdfa
 	<h1>${msg}</h1>
 	
 </body>

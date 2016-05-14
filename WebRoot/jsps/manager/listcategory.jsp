@@ -16,7 +16,8 @@
 
 </head>
 
-<body>
+<body style="text-align: center">
+<h1>显示分类</h1>
 	<table border="1px" align="center">
 		<tr>
 			<td>分类名称</td>

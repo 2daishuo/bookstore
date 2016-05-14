@@ -16,12 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <frameset rows="20%,*">
 	<frame name="top" src="${pageContext.request.contextPath}/jsps/user/top.jsp">
-	
- 	
-	<frameset cols="20%,*">
-		<frame name="left"src="${pageContext.request.contextPath}/jsps/user/left.jsp">
-		<frame name="right"src="${pageContext.request.contextPath}/jsps/manager/manage.jsp">
-	</frameset>
+	<frame name="right"src="${pageContext.request.contextPath}/client/IndexServlet?method=getAll">
+                                                              
  
 </frameset>
 

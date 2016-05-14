@@ -64,4 +64,30 @@ public class BookDaoImpl implements BookDao {
 	}
 
 
+	
+	public List<Book>getPageDate(int startindex,int pagesize,String category_id){
+		try{
+			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+			String sql = "select * from book where cid=? limit ?,?";
+			Object params[]={category_id,startindex,pagesize};
+			return  (List<Book>) runner.query(sql, params,new BeanListHandler(Book.class));
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+
+	public int getTotalRecord(String category_id) {
+		
+		try{
+			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+			String sql = "select count(*) from book where cid=?";
+			
+			long totalrecord= (Long) runner.query(sql,category_id,new ScalarHandler());
+			return (int)totalrecord;
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }

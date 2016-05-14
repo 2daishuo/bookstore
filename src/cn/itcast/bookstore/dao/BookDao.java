@@ -9,5 +9,7 @@ public interface BookDao {
 	Book find(String id);
 	public int getTotalRecord();
 	public List<Book>getPageDate(int startindex,int pagesize);
+	public List<Book>getPageDate(int startindex,int pagesize,String category_id);
+	public int getTotalRecord(String category_id);
 
 }
