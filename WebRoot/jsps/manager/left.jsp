@@ -22,9 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <a href="#" target="right">图书管理</a>
    <br/><br/>
     <a href="${pageContext.request.contextPath}/manager/BookServlet?method=addUI" target="right">添加图书</a><br>
-    <a href="${pageContext.request.contextPath}/manager/BookServlet?method=list" target="right">查看图书</a>
-   <a href="#" target="right">订单管理</a>
-   
-   
+    <a href="${pageContext.request.contextPath}/manager/BookServlet?method=list" target="right">查看图书</a> <br/><br/>
+   <a href="#" target="right">订单管理</a> <br/><br/>
+    <a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=true" target="right">查看已发货的订单</a>
+     <br/><br/>
+    <a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=false" target="right">查看未发货的订单</a>
   </body>
 </html>

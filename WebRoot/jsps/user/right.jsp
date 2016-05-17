@@ -19,7 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body style="text-align:center;">
    <div id="content" style="width:840px">
    <div id="category" style="text-align:left;float:left;width:200px;height:300px;border:1px solid red;">
-  分类列表：
+ 
+   <a href="${pageContext.request.contextPath }/client/IndexServlet?method=getAll"> 查看所有图书</a>
+  
   <ul>
    <c:forEach  var="category" items="${category}">
    <li>
@@ -32,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div id="books">
    <c:forEach  var ="book" items="${page.list }">
    <div id="book" >
-   <div id="image" style="float:left;"><img src="${pageContext.request.contextPath}/images/${book.image}"> </div>
+   <div id="image" style="float:left;"><img style="width: 150px;height: 170px;"src="${pageContext.request.contextPath}/images/${book.image}"> </div>
    <div id="bookinfo" style="float:left;text-align:left">
    <ul>
    <li>${book.bname }</li>

@@ -9,6 +9,8 @@ public interface UserDao {
 	public abstract User findByemail(String email);
 
 	public abstract User findByUsername(String username);
+	public User findUserByUid(String uid);
+	public void updateUser(User user);
 
 	public abstract void updateState(String uid, boolean state);
 

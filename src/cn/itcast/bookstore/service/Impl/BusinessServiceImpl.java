@@ -1,22 +1,32 @@
 package cn.itcast.bookstore.service.Impl;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import cn.itcast.bookstore.dao.BookDao;
 import cn.itcast.bookstore.dao.CategoryDao;
+import cn.itcast.bookstore.dao.OrderDao;
 import cn.itcast.bookstore.dao.UserDao;
 import cn.itcast.bookstore.domain.Book;
 import cn.itcast.bookstore.domain.Cart;
+import cn.itcast.bookstore.domain.CartItem;
 import cn.itcast.bookstore.domain.Category;
+import cn.itcast.bookstore.domain.Order;
+import cn.itcast.bookstore.domain.OrderItem;
 import cn.itcast.bookstore.domain.Page;
 import cn.itcast.bookstore.domain.User;
 import cn.itcast.bookstore.utils.DaoFactory;
+import cn.itcast.bookstore.utils.WebUtils;
 
 public class BusinessServiceImpl {
 																
 	private CategoryDao dao = DaoFactory.getInstance().createDao("cn.itcast.bookstore.dao.Impl.CategoryDaoImpl",CategoryDao.class);
 	private BookDao   bdao=DaoFactory.getInstance().createDao("cn.itcast.bookstore.dao.Impl.BookDaoImpl", BookDao.class);
 	private UserDao udao= DaoFactory.getInstance().createDao("cn.itcast.bookstore.dao.Impl.UserDaoImpl", UserDao.class);
+	private OrderDao odao=DaoFactory.getInstance().createDao("cn.itcast.bookstore.dao.Impl.OrderDaoImpl", OrderDao.class);
+	
+			
 	/**
 	 * 添加分类
 	 * **/
@@ -80,6 +90,12 @@ public class BusinessServiceImpl {
 		cart.add(book);
 		
 	}
+	public void clearCart(Cart cart){
+		cart.clear();
+	}
+	public void deleteItemCart( Cart cart,String bid){
+		cart.delete(bid);
+	}
 	public void register(User user){
 		
 		udao.add(user);
@@ -109,5 +125,48 @@ public class BusinessServiceImpl {
 		return user;
 		
 	 }
+	 public void createOrder(Cart cart,User user){
+		 
+		 if(cart ==null){
+			 throw new RuntimeException("对不起，你没有购买任何东西");
+		 }
+		 Order order= new Order();
+		 order.setOid(WebUtils.makeID());
+		 order.setOrdertime(new Date());
+		 order.setTotalprice(cart.getPrice());
+		 order.setState(false);
+		 order.setUser(user);
+		 for(Map.Entry<String, CartItem> me :cart.getMap().entrySet()){
+		 CartItem cartitem=me.getValue();
+		 OrderItem orderitem= new OrderItem();
+		 orderitem.setBook(cartitem.getBook());
+		 orderitem.setIid(WebUtils.makeID());
+		 orderitem.setQuantity(cartitem.getQuantity());
+		 orderitem.setSubtotal(cartitem.getPrice());
+		 order.getOrderitems().add(orderitem);		 
+		 }
+		 
+		 odao.add(order);
+	 }
+	 public List<Order> myOrder(User user){
+		
+		 
+		 return odao.getMyOrder(user);
+	 }
+	public List <Order> listOrder(String state) {
+		return odao.getAllOrder((Boolean.parseBoolean(state)?1:0));
+		
+	}
+	public Order findOrderDetail(String id){
+		
+		return odao.find(id);
+	}
+	public void confirmOrder(String orderid) {
+		Order order=odao.find(orderid);
+		order.setState(true);
+		odao.updateOrderState(order);
+		
+		
+	}
 
 }

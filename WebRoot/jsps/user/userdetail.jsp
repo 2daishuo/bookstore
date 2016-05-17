@@ -9,12 +9,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title></title>
+    <title>用户信息</title>
     
 	
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
   </head>
   
   <body>
-    管理员右 <br>
+    This is my JSP page. <br>
   </body>
 </html>

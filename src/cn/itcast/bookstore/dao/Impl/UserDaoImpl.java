@@ -12,7 +12,7 @@ public class UserDaoImpl implements UserDao {
 	public void add(User user){
 		try {
 		QueryRunner runner= new QueryRunner(JdbcUtils.getDataSource());
-		String sql = "insert into tb_user values(?,?,?,?,?,?)";
+		String sql = "insert into tb_user(uid,username,password,emali,code,state) values(?,?,?,?,?,?)";
 		Object params[]={user.getUid(),user.getUsername(),user.getPassword(),user.getEmail(),user.getCode(),user.isState()? 1 : 0};
 		
 			runner.update(sql,params);
@@ -56,6 +56,21 @@ public class UserDaoImpl implements UserDao {
 			return null;
 		}
 	}
+public User findUserByUid(String uid) {
+		
+		try {
+			QueryRunner runner= new QueryRunner(JdbcUtils.getDataSource());
+			String sql = "select * from tb_user where uid=?";
+			return (User) runner.query(sql, uid,new BeanHandler(User.class));
+
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 	
 	public void updateState(String uid, boolean state) {
@@ -73,8 +88,10 @@ public class UserDaoImpl implements UserDao {
 		catch (Exception e)
 		{
 			e.printStackTrace();
-		}
+		}	
 		
+	}
+	public void updateUser(User user){
 		
 		
 		

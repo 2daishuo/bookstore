@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>数量</td>
     			<td>小计</td>
     			<td>
-    				<a href="#">删除</a>
+    				<a href="${pageContext.request.contextPath }/client/deleteCartServlet?method=clearAllCart">删除</a>
     			</td>
     		</tr>
     		
@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			<td>${me.value.quantity }</td>
 	    			<td>${me.value.price }</td>
 	    			<td>
-	    				<a href="#">删除</a>
+	    				<a href="${pageContext.request.contextPath }/client/deleteCartServlet?method=clearItemCart&bookid=${me.value.book.bid}">删除</a>
 	    			</td>
     			</tr>
     		</c:forEach>
@@ -43,7 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	
     	</table>
-    	 <a href="${pageContext.request.contextPath }/client/OrderServlet">下订单</a>
+    	 <a href="${pageContext.request.contextPath }/client/OrderServlet">下订单单结算</a>
+    	&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath }/client/IndexServlet?method=getAll">继续购物</a>
     	
 
   </body>

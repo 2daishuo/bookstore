@@ -9,23 +9,25 @@ public class Cart {
 	private Map<String,CartItem> map=new HashMap();
 	private double price;
 	
-	public void add(Book book){
-		
+	public void add(Book book){		
 	CartItem item=map.get(book.getBid());
 	if(item==null)
-	{
-		item=new CartItem();
+	{	item=new CartItem();
 		item.setBook(book);
 		item.setQuantity(1);
-		map.put(book.getBid(), item);
-		
-		
+		map.put(book.getBid(), item);		
 	}else
 	{
-		item.setQuantity(item.getQuantity()+1);
-		
+		item.setQuantity(item.getQuantity()+1);		
+	}	
 	}
-	
+	//清空所有条目
+	public void clear(){
+		map.clear();
+	}
+	//清空指定条目
+	public void delete(String bid){
+		map.remove(bid);
 	}
 	public Map<String, CartItem> getMap() {
 		return map;

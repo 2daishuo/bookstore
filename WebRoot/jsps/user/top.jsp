@@ -35,11 +35,8 @@ a:hover {
 <body style="text-align:center">
 	<h1 style="text-align: center;">小小书屋</h1>
 	<div style="font-size: 10pt;">
-
-
 		<c:choose>
 			<c:when test="${empty sessionScope.user}">
-
 				<a
 					href="${pageContext.request.contextPath}/client/IndexServlet?method=getAll"
 					target="right">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -49,19 +46,17 @@ a:hover {
 					target="right">注册</a>
 			</c:when>
 			<c:otherwise>
-		您好：${user.username }&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/jsps/user/userdetail.jsp" target="right">hi：${sessionScope.user.username }</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 	<a
 					href="${pageContext.request.contextPath}/client/IndexServlet?method=getAll"
 					target="right">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-		<a href="">我的订单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath}/client/BuyServlet"
+		<a href="${pageContext.request.contextPath }/client/MyOrderServlet" target="right">我的订单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/jsps/user/listcart.jsp"
 					target="right">我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-		<a href="${pageContext.request.contextPath}/client/LogoutServlet" target="_parent">退出</a>
-
+		<a href="${pageContext.request.contextPath}/client/LogoutServlet"
+					target="_parent">退出</a>
 			</c:otherwise>
 		</c:choose>
-
-
 	</div>
 </body>
 </html>
