@@ -1,5 +1,6 @@
 package cn.itcast.bookstore.dao.Impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -17,8 +18,8 @@ public class BookDaoImpl implements BookDao {
 	public void add(Book book){
 		try{
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "insert into book(bid,bname,price,author,image,cid,description) values(?,?,?,?,?,?,?)";
-			Object params[] = {book.getBid(),book.getBname(),book.getPrice(),book.getAuthor(),book.getImage(),book.getCategory_id(),book.getDescription()};
+			String sql = "insert into book(bid,bname,price,author,image,category_id,description,del) values(?,?,?,?,?,?,?,?)";
+			Object params[] = {book.getBid(),book.getBname(),book.getPrice(),book.getAuthor(),book.getImage(),book.getCategory_id(),book.getDescription(),false};
 			runner.update(sql, params);
 		}catch (Exception e) {
 			throw new RuntimeException(e);
@@ -41,7 +42,7 @@ public class BookDaoImpl implements BookDao {
 	public List<Book>getPageDate(int startindex,int pagesize){
 		try{
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "select * from book limit ?,?";
+			String sql = "select * from book where del=false limit ?,?";
 			Object params[]={startindex,pagesize};
 			return  (List<Book>) runner.query(sql, params,new BeanListHandler(Book.class));
 		}catch (Exception e) {
@@ -54,7 +55,7 @@ public class BookDaoImpl implements BookDao {
 		
 		try{
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "select count(*) from book";
+			String sql = "select count(*) from book where del=false";
 			
 			long totalrecord= (Long) runner.query(sql,new ScalarHandler());
 			return (int)totalrecord;
@@ -68,7 +69,7 @@ public class BookDaoImpl implements BookDao {
 	public List<Book>getPageDate(int startindex,int pagesize,String category_id){
 		try{
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "select * from book where cid=? limit ?,?";
+			String sql = "select * from book where category_id=?and del=false limit ?,?";
 			Object params[]={category_id,startindex,pagesize};
 			return  (List<Book>) runner.query(sql, params,new BeanListHandler(Book.class));
 		}catch (Exception e) {
@@ -81,7 +82,7 @@ public class BookDaoImpl implements BookDao {
 		
 		try{
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "select count(*) from book where cid=?";
+			String sql = "select count(*) from book where del=false and category_id=?";
 			
 			long totalrecord= (Long) runner.query(sql,category_id,new ScalarHandler());
 			return (int)totalrecord;
@@ -89,5 +90,27 @@ public class BookDaoImpl implements BookDao {
 			throw new RuntimeException(e);
 		}
 	}
+	//É¾³ýÍ¼Êé¡£¼ÙÉ¾³ý¡£½«delÖÃÎªtrueÎªÉ¾³ý¡£
+	public void deleteBook(String bid){
+		try {
+			String sql="update book set del=true where bid=?";
+			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+			runner.update(sql,bid);
+		} catch (Exception e) {
+			
+			throw new RuntimeException(e);
+		}		
+	}
+	 public void updateBook(Book book){
+		 
+		 try{
+				QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+				String sql = "update book set bname=?,price=?,author=?,image=?,category_id=?,description=?,del=? where bid=?";
+				Object params[] = {book.getBname(),book.getPrice(),book.getAuthor(),book.getImage(),book.getCategory_id(),book.getDescription(),false,book.getBid()};
+				runner.update(sql, params);
+			}catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+	 }
 
 }

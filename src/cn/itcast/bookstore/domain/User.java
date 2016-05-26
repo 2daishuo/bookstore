@@ -1,5 +1,7 @@
 package cn.itcast.bookstore.domain;
 
+import java.util.Date;
+
 public class User {
 
 	private String uid;//Ö÷¼ü
@@ -8,6 +10,42 @@ public class User {
 	private String email;
 	private String code;
 	private boolean state;
+	private String gender;
+	private String cellphone;
+	private String preferences;
+	private String address;
+	private Date birth; 
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getCellphone() {
+		return cellphone;
+	}
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+	public String getPreferences() {
+		return preferences;
+	}
+	public void setPreferences(String preferences) {
+		this.preferences = preferences;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public Date getBirth() {
+		return birth;
+	}
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
 	public String getUid() {
 		return uid;
 	}

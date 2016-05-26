@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <h1>登录</h1>
   <p style="color:red; font-weight:900">${msg}</p>
-  <form method="post" action="${pageContext.request.contextPath}/client/LoginServlet">
+  <form method="post" target="_top"action="${pageContext.request.contextPath}/client/LoginServlet">
  <input type="hidden" name="methed" value="login"/>
 您的姓名:&nbsp;<input type="text" value="${form.username }" name="username"/><br/>
 密码:&nbsp;<input type="password" value="${form.password }" name="password"/><br/>

@@ -15,6 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    管理员右 <br>
+  
   </body>
 </html>

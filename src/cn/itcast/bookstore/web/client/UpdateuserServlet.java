@@ -1,51 +1,46 @@
 package cn.itcast.bookstore.web.client;
 
-
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.itcast.bookstore.domain.Book;
-import cn.itcast.bookstore.domain.Cart;
+import cn.itcast.bookstore.domain.User;
 import cn.itcast.bookstore.service.Impl.BusinessServiceImpl;
+import cn.itcast.bookstore.utils.WebUtils;
 
-public class BuyServlet extends HttpServlet {
+public class UpdateuserServlet extends HttpServlet {
 
-
-
-
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try{
-		 String bid=request.getParameter("bid");
+		request.setCharacterEncoding("utf-8");
 		
-	
-		int quantity=Integer.parseInt(request.getParameter("quantity"));
-		 System.out.println(bid+quantity);
+		try{
+			User user =WebUtils.request2Bean(request, User.class);
+			System.out.println("5667"+user.getPreferences()+new java.sql.Date(user.getBirth().getTime())+"  hahah");
+		
 		BusinessServiceImpl service= new BusinessServiceImpl();
-		Book book=service.findBook(bid);
-	
-	
-		 System.out.println("书名"+book.getBname());
-		Cart cart=(Cart) request.getSession().getAttribute("cart");
-		if(cart==null){
-			cart= new Cart();
-			request.getSession().setAttribute("cart", cart);			
-		}
-		service.buyBook(cart,book,quantity);
-		request.getRequestDispatcher("/jsps/user/listcart.jsp").forward(request, response);
+		service.updateUserDetail(user);
+		request.setAttribute("msg", "更新成功");
+		request.getRequestDispatcher("/msg.jsp").forward(request, response);
+		
+		
 		}catch(Exception e){
+			request.setAttribute("msg", "更新失败");
 			e.printStackTrace();
-			request.setAttribute("msg", "添加购物车失败");
 			request.getRequestDispatcher("/msg.jsp").forward(request, response);
 			
 			
 			
 		}
+		
+		
 
+	
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,5 +49,4 @@ public class BuyServlet extends HttpServlet {
 
 	}
 
-	
 }

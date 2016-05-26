@@ -9,16 +9,16 @@ public class Cart {
 	private Map<String,CartItem> map=new HashMap();
 	private double price;
 	
-	public void add(Book book){		
+	public void add(Book book, int quantity){		
 	CartItem item=map.get(book.getBid());
 	if(item==null)
 	{	item=new CartItem();
 		item.setBook(book);
-		item.setQuantity(1);
+		item.setQuantity(quantity);
 		map.put(book.getBid(), item);		
 	}else
 	{
-		item.setQuantity(item.getQuantity()+1);		
+		item.setQuantity(item.getQuantity()+quantity);		
 	}	
 	}
 	//清空所有条目

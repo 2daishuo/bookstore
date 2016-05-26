@@ -47,9 +47,13 @@ public class UserDaoImpl implements UserDao {
 		try {
 			QueryRunner runner= new QueryRunner(JdbcUtils.getDataSource());
 			String sql = "select * from tb_user where username=?";
-			return (User) runner.query(sql, username,new BeanHandler(User.class));
-
 			
+			User user= (User) runner.query(sql, username,new BeanHandler(User.class));
+
+			//System.out.println(user.getUsername());
+			//System.out.println(user.getGender());
+			//System.out.println(user.getBirth());
+			return user;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,7 +97,19 @@ public User findUserByUid(String uid) {
 	}
 	public void updateUser(User user){
 		
+		try{
+			String sql = "update tb_user set username=?,gender=?, birth=?, cellphone=?, preferences=? where uid=?";
+			QueryRunner runner= new QueryRunner(JdbcUtils.getDataSource());
+
 		
+		Object params[]={user.getUsername(),user.getGender(),new java.sql.Date(user.getBirth().getTime()),user.getCellphone(),user.getPreferences(),user.getUid()};
+		runner.update(sql,params);
+		
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}	
 		
 	}
 }

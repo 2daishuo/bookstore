@@ -1,24 +1,34 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
     <title>主体</title>
-    
+    <style type="text/css">
+
+
+.icon {
+	margin: 12px;
+	border: solid 1px black;
+	width: 190px;
+	height: 230px;
+	text-align: center;
+	float: left;
+}
+</style>
 
 
   </head>
   
   <body style="text-align:center;">
-   <div id="content" style="width:840px">
-   <div id="category" style="text-align:left;float:left;width:200px;height:300px;border:1px solid red;">
+   <div id="content" style="width:1330px;height:1000px;border:1px solid green;">
+   <div id="category" style="text-align:left;float:left;width:200px;height:1000px;border:1px solid red;">
  
    <a href="${pageContext.request.contextPath }/client/IndexServlet?method=getAll"> 查看所有图书</a>
   
@@ -30,27 +40,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </c:forEach>
    </ul>
    </div>
-   <div id="bookandpage" style="float:left;margin-left:50px;">
-   <div id="books">
+ <div id="bookpage"  style="width:1120px;height:1000px;float: right;border:1px solid black;">
+   <div id="books" style="width:1120px;height:900px;border:1px solid green;">
    <c:forEach  var ="book" items="${page.list }">
-   <div id="book" >
-   <div id="image" style="float:left;"><img style="width: 150px;height: 170px;"src="${pageContext.request.contextPath}/images/${book.image}"> </div>
-   <div id="bookinfo" style="float:left;text-align:left">
-   <ul>
-   <li>${book.bname }</li>
-   <li>${book.author }</li>
-   <li>${book.price }</li>
-   <li> <a href="${pageContext.request.contextPath}/client/BuyServlet?bookid=${book.bid}">购买</a></li>   
-   </ul>   
-  </div>
-  <div style="clear:both"></div>
+   <div id="book" class="icon" >
+  <a href="${pageContext.request.contextPath }/client/BuyBookPreServlet?bid=${book.bid}"><img style="width: 150px;height: 170px;"src="${pageContext.request.contextPath}/images/${book.image}"></a> 
   <br>
-   
-   
-   
-   
-   </div>
-   
+   <a href="${pageContext.request.contextPath }/client/BuyBookPreServlet?bid=${book.bid}">${book.bname }</a>
+    
+  </div>
+ 
+     
    </c:forEach>
    </div>
    
@@ -64,9 +64,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	总共[${page.totalpage }]页，总[${page.totalrecord}]条记录
    
    </div>
-   
-   
    </div>
+   
+  
    
    
    

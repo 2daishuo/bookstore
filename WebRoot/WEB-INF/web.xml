@@ -80,17 +80,39 @@
     <servlet-class>cn.itcast.bookstore.web.manager.ConfirmOrderServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>MyOrderServlet</servlet-name>
     <servlet-class>cn.itcast.bookstore.web.client.MyOrderServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>deleteCartServlet</servlet-name>
     <servlet-class>cn.itcast.bookstore.web.client.deleteCartServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UpdateUserDetailServlet</servlet-name>
+    <servlet-class>cn.itcast.bookstore.web.client.UpdateUserDetailServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateuserServlet</servlet-name>
+    <servlet-class>cn.itcast.bookstore.web.client.UpdateuserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteCategoryServlet</servlet-name>
+    <servlet-class>cn.itcast.bookstore.web.manager.DeleteCategoryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>BuyBookPreServlet</servlet-name>
+    <servlet-class>cn.itcast.bookstore.web.client.BuyBookPreServlet</servlet-class>
+  </servlet>
+
+
+
+
 
 
 
@@ -162,6 +184,22 @@
   <servlet-mapping>
     <servlet-name>deleteCartServlet</servlet-name>
     <url-pattern>/client/deleteCartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateUserDetailServlet</servlet-name>
+    <url-pattern>/client/UpdateUserDetailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateuserServlet</servlet-name>
+    <url-pattern>/client/UpdateuserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteCategoryServlet</servlet-name>
+    <url-pattern>/manager/DeleteCategoryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BuyBookPreServlet</servlet-name>
+    <url-pattern>/client/BuyBookPreServlet</url-pattern>
   </servlet-mapping>
   
   

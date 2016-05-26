@@ -13,6 +13,11 @@ public interface CategoryDao {
 
 	public abstract List<Category> getAll();
 
-	public abstract void add(Book book);
+	
+	public void deleteCategory(String cid);
+
+	public  Category findCategoryByName(String name);
+
+	public  void updateCategory(Category category);
 
 }

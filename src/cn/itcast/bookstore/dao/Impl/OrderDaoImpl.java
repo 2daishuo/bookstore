@@ -23,7 +23,7 @@ public class OrderDaoImpl implements OrderDao {
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
 			String sql = "insert into orders(oid,ordertime,totalprice,state,uid)values(?,?,?,?,?)";
 			Object params[] = { order.getOid(), order.getOrdertime(),
-					order.getTotalprice(), order.isState(),
+					order.getTotalprice(), order.getState(),
 					order.getUser().getUid() };
 			runner.update(sql, params);
 			Set<OrderItem> set = order.getOrderitems();
@@ -131,7 +131,7 @@ public class OrderDaoImpl implements OrderDao {
 		try {
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
 			String sql = "update orders set state=? where oid=?";
-			Object params[] = { order.isState() ? 1 : 0, order.getOid() };
+			Object params[] = { order.getState(), order.getOid() };
 			runner.update(sql, params);
 		} catch (SQLException e) {
 

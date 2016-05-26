@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Page {
 private int totalpage;//记住总页数
-private int pagesize=3;//页面大小
+private int pagesize=10;//页面大小
 private int totalrecord;//总记录数
 private int pagenum;//当前页
 private List list;

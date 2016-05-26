@@ -29,8 +29,8 @@
 				<td>${c.cname}</td>
 				<td>${c.description}</td>
 				<td>
-				<a href="">删除</a>
-				<a href="">修改</a>
+				<a href="${pageContext.request.contextPath}/manager/CategoryServlet?method=delete&cid=${c.cid}" onclick="return confirm('您真要删除？')"><span style="display:inline-block;width:40px;height:25px;background-color:green;font-size:14px;font-family:'Simsun';text-align:center;color:white;line-height:25px">删除</span></a>
+				<a href="${pageContext.request.contextPath}/manager/CategoryServlet?method=updatepre&cid=${c.cid}""><span style="display:inline-block;width:40px;height:25px;background-color:red;font-size:14px;font-family:'Simsun';text-align:center;color:white;line-height:25px">修改</span></a>
 				</td>
 			</tr>
 

@@ -9,12 +9,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <style>
+body{
+	margin:0px auto;
+  padding:0px;
+  text-align:center;
+	
+}
+</style>
     <title>添加图书</title>
       </head>  
-<body>
+<body >
 <form method="post" action="${pageContext.request.contextPath}/manager/BookServlet?method=add" enctype="multipart/form-data">
-<table frame="border"width="70%" highth="70%">
+<table style="border:1px solid black;">
 <tr>
 <td>图书名称</td>
 <td><input type="text" name="bname"></td>
@@ -43,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<td>所属分类</td>
    			<td>
    				<select name="category_id">
-   				<option value="123">化社会上还是</option>
+   				
    					<c:forEach var="c" items="${category}">
    					
    						<option value="${c.cid }">${c.cname }</option>

@@ -10,6 +10,22 @@
 <html>
 <head>
 <base href="<%=basePath%>">
+	<style>
+		body{
+		background-image:url(images/a.jpg);
+		background-repeat:repeat; 
+		}
+		h2{
+			display:block;
+			width:150px;
+			color:darkred;
+			border:1px solid gray; 
+			text-align:center;
+			margin:50px auto;
+			font-family:"微软雅黑";
+			
+		}
+	</style>
 </head>
 
 <body>

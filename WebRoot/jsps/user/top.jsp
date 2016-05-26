@@ -46,7 +46,7 @@ a:hover {
 					target="right">注册</a>
 			</c:when>
 			<c:otherwise>
-		<a href="${pageContext.request.contextPath}/jsps/user/userdetail.jsp" target="right">hi：${sessionScope.user.username }</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/client/UpdateUserDetailServlet?username=${sessionScope.user.username}" target="right">hi：${sessionScope.user.username }</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 	<a
 					href="${pageContext.request.contextPath}/client/IndexServlet?method=getAll"
 					target="right">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;

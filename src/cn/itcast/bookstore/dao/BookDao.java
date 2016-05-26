@@ -11,5 +11,8 @@ public interface BookDao {
 	public List<Book>getPageDate(int startindex,int pagesize);
 	public List<Book>getPageDate(int startindex,int pagesize,String category_id);
 	public int getTotalRecord(String category_id);
+	public void  deleteBook(String bid);
+	 public void updateBook(Book book);
+	
 
 }

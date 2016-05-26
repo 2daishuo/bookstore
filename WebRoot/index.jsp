@@ -17,7 +17,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <frameset rows="20%,*">
 	<frame name="top" src="${pageContext.request.contextPath}/jsps/user/top.jsp">
 	<frame name="right"src="${pageContext.request.contextPath}/client/IndexServlet?method=getAll">
-                                                              
+   
+                                                                                                                
  
 </frameset>
 

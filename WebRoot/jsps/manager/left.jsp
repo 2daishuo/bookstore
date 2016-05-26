@@ -10,6 +10,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>后台左侧导航</title>	
+    <style>
+    	a{
+    		display:block;
+    		width:100px;
+    		height:30px;
+    		text-decoration:none;
+    		color:gray;
+    		text-align:center;
+    		line-height:30px;
+    		border:1px solid black;
+    	}
+border:1px solid rgb(211,211,211);
+width:260px;
+color:#ffffff;
+font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+}
+    </style>
 
   </head>
   

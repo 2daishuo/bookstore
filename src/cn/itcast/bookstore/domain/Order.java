@@ -8,9 +8,17 @@ public class Order {
 	private String oid;
 	private Date ordertime;
 	private double totalprice;
-	private boolean state;
+	private int state;
 	private User user;
+	private String address;
 	private Set<OrderItem> orderitems=new HashSet();
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getOid() {
 		return oid;
 	}
@@ -30,10 +38,11 @@ public class Order {
 	public void setTotalprice(double totalprice) {
 		this.totalprice = totalprice;
 	}
-	public boolean isState() {
+
+	public int getState() {
 		return state;
 	}
-	public void setState(boolean state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 	public User getUser() {

@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cn.itcast.bookstore.domain.Book;
 import cn.itcast.bookstore.domain.Page;
+import cn.itcast.bookstore.domain.User;
 import cn.itcast.bookstore.service.Impl.BusinessServiceImpl;
 import cn.itcast.bookstore.utils.WebUtils;
 
@@ -39,17 +40,67 @@ public class BookServlet extends HttpServlet {
 		if(method.equalsIgnoreCase("list")){
 			list(request,response);//派发请求
 		}
+		if(method.equalsIgnoreCase("bookDetail")){
+			bookDetail(request,response);
+		}
+		if(method.equalsIgnoreCase("bookDelete")){
+			bookDelete(request,response);
+		}
+		if(method.equalsIgnoreCase("bookUpdate")){
+			bookUpdate(request,response);
+		}
 	}
 
-	
+	//删除一本书。实际是经del置为1
+	private void bookDelete(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String bid=request.getParameter("bid");
+		BusinessServiceImpl service= new BusinessServiceImpl();
+		service.deleteBook(bid);
+		list(request,response);
+		
+		
+	}
+
+	private void bookUpdate(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		Book book = WebUtils.request2Bean(request, Book.class);
+		System.out.println("123456"+book.getBid()+book.getAuthor()+book.getCategory_id());
+		 System.out.println("description"+book.getDescription()+book.getImage());
+		
+		BusinessServiceImpl service= new BusinessServiceImpl();
+	service.updateBook(book);
+		list(request,response);
+		
+		
+	}
+
+	private void bookDetail(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String bid=request.getParameter("bid");
+		BusinessServiceImpl service= new BusinessServiceImpl();
+		 request.setAttribute("book",service.findBook(bid));
+		 Book book=service.findBook(bid);
+		 System.out.println(book.getBid()+book.getAuthor()+book.getCategory_id());
+		 
+		request.setAttribute("categoryList", service.getAllCategory());
+		
+		request.getRequestDispatcher("/jsps/manager/bookdetail.jsp").forward(request, response);
+		
+		
+		
+	}
+
+
 	private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	System.out.println("查看图书1");
+	//System.out.println("查看图书1");
 		String pagenum=request.getParameter("pagenum");
-		System.out.println(pagenum+"查看图书2");
+		System.out.println(pagenum+"当前书页");
 	BusinessServiceImpl service= new BusinessServiceImpl();
 	Page page=service.getBookPageDate(pagenum);
 	request.setAttribute("page", page);
-	System.out.println("查看图书3");
+	//System.out.println("查看图书3");
 	request.getRequestDispatcher("/jsps/manager/listbook.jsp").forward(request, response);
 	
 		
@@ -113,7 +164,7 @@ public class BookServlet extends HttpServlet {
 		return book;
 				
 			
-	//	return null;
+	
 	}
 
 
@@ -122,7 +173,7 @@ public class BookServlet extends HttpServlet {
 		return UUID.randomUUID().toString()+"_"+ext;
 	}
 
-
+//添加图书时将所有的分类数据带到添加页面
 	private void addUI(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BusinessServiceImpl  service= new BusinessServiceImpl();
 	

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import cn.itcast.bookstore.Exception.CategoryException;
 import cn.itcast.bookstore.dao.BookDao;
 import cn.itcast.bookstore.dao.CategoryDao;
 import cn.itcast.bookstore.dao.OrderDao;
@@ -40,6 +41,14 @@ public class BusinessServiceImpl {
 	/**得到所有分类**/
 	public List<Category> getAllCategory(){
 		return dao.getAll();
+	}
+	public void deleteCategory(String cid) throws CategoryException{
+		
+		int count=bdao.getTotalRecord(cid);
+		if(count >0)			
+			throw new CategoryException("该分类下有图书，不能删除！");
+			dao.deleteCategory(cid);
+		
 	}
 	/**添加图书
 	 * 
@@ -85,9 +94,9 @@ public class BusinessServiceImpl {
 		
 		
 	}
-	public void buyBook(Cart cart, Book book) {
+	public void buyBook(Cart cart, Book book ,int quantity) {
 		// TODO Auto-generated method stub
-		cart.add(book);
+		cart.add(book,quantity);
 		
 	}
 	public void clearCart(Cart cart){
@@ -95,6 +104,10 @@ public class BusinessServiceImpl {
 	}
 	public void deleteItemCart( Cart cart,String bid){
 		cart.delete(bid);
+	}
+	public void deleteBook(String bid){
+		bdao.deleteBook(bid);
+		
 	}
 	public void register(User user){
 		
@@ -114,6 +127,10 @@ public class BusinessServiceImpl {
 		 udao.updateState(uid, state);
 		 
 	 }
+	 public  void updateUserDetail(User user){
+		 udao.updateUser(user);
+		 
+	 }
 	 public User login(User form){
 		 
 		User user= udao.findByUsername(form.getUsername());
@@ -125,26 +142,8 @@ public class BusinessServiceImpl {
 		return user;
 		
 	 }
-	 public void createOrder(Cart cart,User user){
+	 public void createOrder(Order order){
 		 
-		 if(cart ==null){
-			 throw new RuntimeException("对不起，你没有购买任何东西");
-		 }
-		 Order order= new Order();
-		 order.setOid(WebUtils.makeID());
-		 order.setOrdertime(new Date());
-		 order.setTotalprice(cart.getPrice());
-		 order.setState(false);
-		 order.setUser(user);
-		 for(Map.Entry<String, CartItem> me :cart.getMap().entrySet()){
-		 CartItem cartitem=me.getValue();
-		 OrderItem orderitem= new OrderItem();
-		 orderitem.setBook(cartitem.getBook());
-		 orderitem.setIid(WebUtils.makeID());
-		 orderitem.setQuantity(cartitem.getQuantity());
-		 orderitem.setSubtotal(cartitem.getPrice());
-		 order.getOrderitems().add(orderitem);		 
-		 }
 		 
 		 odao.add(order);
 	 }
@@ -163,9 +162,21 @@ public class BusinessServiceImpl {
 	}
 	public void confirmOrder(String orderid) {
 		Order order=odao.find(orderid);
-		order.setState(true);
+		order.setState(1);
 		odao.updateOrderState(order);
 		
+		
+	}
+	public Category findCategoryByName(String name) {
+		return dao.findCategoryByName(name);
+		
+	}
+	public void updateCategory(Category category) {
+		dao.updateCategory(category);
+		
+	}
+	public void updateBook(Book book) {
+		bdao.updateBook(book);
 		
 	}
 

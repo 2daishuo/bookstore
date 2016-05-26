@@ -4,6 +4,8 @@ public class CartItem {
 	private Book book;
 	private int quantity;
 	private double price;
+	
+	
 	public Book getBook() {
 		return book;
 	}

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+import cn.itcast.bookstore.Exception.CategoryException;
 import cn.itcast.bookstore.domain.Category;
 import cn.itcast.bookstore.service.Impl.BusinessServiceImpl;
 import cn.itcast.bookstore.utils.WebUtils;
@@ -18,9 +20,7 @@ import cn.itcast.bookstore.utils.WebUtils;
 public class CategotyServlet extends HttpServlet {
 
 	
-	public void destroy() {
-		super.destroy(); 
-	}
+	
 
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,8 +32,8 @@ public class CategotyServlet extends HttpServlet {
 			delete(request,response);
 		}else if(method.equals("update")){
 			update(request,response);
-		}else if(method.equals("find")){
-			find(request,response);
+		}else if(method.equals("updatepre")){
+			updatepre(request,response);
 		}else if(method.equals("listall")){
 			listall(request,response);
 		}else{
@@ -59,18 +59,56 @@ public class CategotyServlet extends HttpServlet {
 		
 	}
 
-	private void find(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void updatepre(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cid=request.getParameter("cid");
+		BusinessServiceImpl service= new BusinessServiceImpl();
+		request.setAttribute("category",service.findCategory(cid));
+		request.getRequestDispatcher("/jsps/manager/modefy.jsp").forward(request, response);
+		
+		
 		
 	}
 
-	private void update(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	}
-
-	private void delete(HttpServletRequest request, HttpServletResponse response) {
+		
+			System.out.println("执行servlet的update方法");
+			String cid=request.getParameter("cid");
+			String name = request.getParameter("name");
+			String description = request.getParameter("description");
+			
+			System.out.println(cid+"cid===");
+			BusinessServiceImpl service = new BusinessServiceImpl();
+			//if(service.findCategoryByName(name)==null){
+		Category category = new Category();
+			category.setCname(name);
+			category.setDescription(description);
+			category.setCid(cid);
+			
+			
+			service.updateCategory(category);
+			listall(request, response);
+		
 	
+		
+	}
+
+	private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		try{
+		String cid=request.getParameter("cid");
+		BusinessServiceImpl service= new BusinessServiceImpl();
+		service.deleteCategory(cid);
+		listall(request, response);
+		
+		
+		}
+		catch(CategoryException e){
+			request.setAttribute("msg", e.getMessage());
+			request.getRequestDispatcher("/msg.jsp").forward(request, response);
+			
+		}
+		
 		
 	}
 
