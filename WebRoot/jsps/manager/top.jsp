@@ -13,8 +13,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
 	<style>
 		body{
-		background-image:url(.../images/a.jpg);
+		background-image:url(./images/b.gif);
 		background-repeat:no-repeat; 
+		background-size:cover;
+		
+		background-position:50% 50%;
 		}
 		h2{
 			display:block;
@@ -31,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body style="text-align:center;background-image:url(./images/a.jpg);
+  <body style="text-align:center;background-image:url(./images/b.gif);
 		background-repeat:no-repeat; ">
   <h2>书屋管理</h2>
      <br>

@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     </table>
     
-    <c:if test="${!order.state}">
+    <c:if test="${order.state==0}">
       <a href="${pageContext.request.contextPath }/manager/ConfirmOrderServlet?orderid=${order.oid}">确认发货</a>
     </c:if>
   </body>

@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			<td>${order.user.username }</td>
 	    			<td>${order.ordertime }</td>
 	    			<td>${order.totalprice }</td>
-	    			<td>${order.state==true?'已发货':'未发货' }</td>
+	    			<td>${order.state==2?'已发货':'未发货' }</td>
 	    			<td>
 	    				<a href="${pageContext.request.contextPath}/manager/OrderDetailServlet?orderid=${order.oid}">查看明细</a>
 	    				<a href="#">删除</a>

@@ -17,11 +17,15 @@ body {
 	font-size: 12pt;
 	width: 1100px;
 	height: 700px;
+	background-image:url(./images/bg.gif);
+		background-repeat:repeat; 
+		
+
 }
 
 .icon {
 	margin: 12px;
-	border: solid 1px black;
+	border: solid 1px #ff8cf0;
 	width: 190px;
 	height: 230px;
 	text-align: center;

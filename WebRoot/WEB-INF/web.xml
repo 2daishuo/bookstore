@@ -92,20 +92,14 @@
     <servlet-class>cn.itcast.bookstore.web.client.UpdateUserDetailServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>UpdateuserServlet</servlet-name>
     <servlet-class>cn.itcast.bookstore.web.client.UpdateuserServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>DeleteCategoryServlet</servlet-name>
     <servlet-class>cn.itcast.bookstore.web.manager.DeleteCategoryServlet</servlet-class>
   </servlet>
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>BuyBookPreServlet</servlet-name>
     <servlet-class>cn.itcast.bookstore.web.client.BuyBookPreServlet</servlet-class>
   </servlet>

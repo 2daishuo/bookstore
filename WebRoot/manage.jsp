@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 
   </head>
-  <frameset rows="20%,*">
+  <frameset rows="30%,*">
 	<frame name="top" src="${pageContext.request.contextPath}/jsps/manager/top.jsp">
 	
  	
