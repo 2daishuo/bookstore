@@ -17,8 +17,7 @@ body {
 	font-size: 12pt;
 	width: 1100px;
 	height: 700px;
-	background-image:url(./images/bg.gif);
-		background-repeat:repeat; 
+	
 		
 
 }
@@ -36,7 +35,11 @@ body {
 </head>
 
 <body style="text-align: center">
-<div style="width: 1100px;height: 640px;border: solid 1px black;">
+<!--  background-image:url(./images/bg.png);
+
+background-repeat:repeat; -->
+		
+<div style="width: 1100px;height: 640px;border: solid 1px pink;">
 	<c:forEach var="book" items="${page.list}">
 		<div class="icon">
 

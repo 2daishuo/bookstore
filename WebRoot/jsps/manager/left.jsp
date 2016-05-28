@@ -20,11 +20,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		text-align:center;
     		line-height:30px;
     		border:1px solid black;
+    		font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
     	}
-border:1px solid rgb(211,211,211);
-width:260px;
-color:#ffffff;
-font-family: "Verdana", "Arial", "Helvetica", "sans-serif";
+
+body{
+ background: #f2eede;
+
+}
+
+
 }
     </style>
 

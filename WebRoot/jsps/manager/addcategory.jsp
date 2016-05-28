@@ -11,7 +11,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>添加分类</title>
-   
+     <style type="text/css">
+     body{
+    background: #f2eede;
+    }
+    
+    
+    
+    </style>
+    
   </head>
   
   <body>											

@@ -12,20 +12,84 @@
 <base href="<%=basePath%>">
 
 <title>列出所有分类</title>
+<script type="text/javascript" src="/js/jquery-1.5.1.min.js" >
+$(function(){  
+alert("ok");   
 
+});
+
+</script>
+  <style type="text/css">
+     body{
+    background: #f2eede;
+    }
+    table {
+        border-collapse: collapse;
+        width: 50em;
+        border: 1px solid #666;
+    }
+     caption {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 1em 0;
+    }
+     col {
+        border-right: 1px solid #ccc;
+    }
+    th {
+        font-weight: normal;
+        text-align: left;
+    }
+      tr:hover {
+        background-color:#edf5ff;
+        color:#fff;
+    }
+     th, td {
+        padding: 0.1em 0.5em;
+    }
+    thead tr:hover {
+        background-color: transparent;
+        color: inherit;
+    } 
+     .odd {
+        background-color:#f2eede;
+    }
+      col#albumCol {
+        border: none;
+    }
+    #listheader{
+    text-indent: -1000em;
+    
+    }
+    </style>
+    
 
 </head>
 
 <body style="text-align: center">
-<h1>显示分类</h1>
-	<table border="1px" align="center">
-		<tr>
-			<td>分类名称</td>
-			<td>分类描述</td>
-			<td>操作</td>
+
+	<table >
+	<caption>显示分类</caption>
+	 <colgroup>
+        <col id="PlaylistCol" />
+        <col id="trackCol" />
+        <col id="artistCol" />
+        <col id="albumCol" />
+    </colgroup>
+	 <thead>
+		<tr  scope="col">
+		<th id="listheader"> &nbsp;</th>
+			<th>分类名称</th>
+			<th>分类描述</th>
+			<th>操作</th>
 		</tr>
+		</thead>
+		<tbody>
 		<c:forEach var="c" items="${categorys}">
-			<tr>
+			<tr class="odd">
+			<td >
+              <span class="numberClass"></span>
+              </td>   
 				<td>${c.cname}</td>
 				<td>${c.description}</td>
 				<td>
@@ -36,7 +100,7 @@
 
 
 		</c:forEach>
-
+</tbody>
 
 	</table>
 </body>

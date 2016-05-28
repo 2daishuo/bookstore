@@ -16,14 +16,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		background-image:url(./images/b.gif);
 		background-repeat:no-repeat; 
 		background-size:cover;
+		margin:0px;
 		
 		background-position:50% 50%;
 		}
-		h2{
+		h1{
 			display:block;
 			width:150px;
 			color:darkred;
-			border:1px solid gray; 
+			 
 			text-align:center;
 			margin:50px auto;
 			font-family:"微软雅黑";
@@ -36,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body style="text-align:center;background-image:url(./images/b.gif);
 		background-repeat:no-repeat; ">
-  <h2>书屋管理</h2>
+  <h1>书屋管理</h1>
      <br>
   </body>
 </html>
