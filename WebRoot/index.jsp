@@ -10,12 +10,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>首页</title>
-	
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.12.2.js"> </script>
   </head>
   
 
-    <frameset rows="20%,*">
-	<frame name="top" src="${pageContext.request.contextPath}/jsps/user/top.jsp">
+    <frameset rows="27%,*" frameborder="0" >
+	<frame name="top" style="scrollbars :no;"src="${pageContext.request.contextPath}/jsps/user/top.jsp">
 	<frame name="right"src="${pageContext.request.contextPath}/client/IndexServlet?method=getAll">
    
                                                                                                                 

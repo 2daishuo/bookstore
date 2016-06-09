@@ -11,13 +11,15 @@ public class UserDaoImpl implements UserDao {
 	
 	public void add(User user){
 		try {
+			System.out.println(user.getUid()+user.getUsername());
 		QueryRunner runner= new QueryRunner(JdbcUtils.getDataSource());
-		String sql = "insert into tb_user(uid,username,password,emali,code,state) values(?,?,?,?,?,?)";
-		Object params[]={user.getUid(),user.getUsername(),user.getPassword(),user.getEmail(),user.getCode(),user.isState()? 1 : 0};
+		String sql = "insert into tb_user(uid,username,password,email,cellphone,gender,birth,preferences) values(?,?,?,?,?,?,?,?)";
+		Object params[]={user.getUid(),user.getUsername(),user.getPassword(),user.getEmail(),user.getCellphone(),"ÄÐ","1977-01-01","hhh"};
 		
 			runner.update(sql,params);
 		} catch (Exception e) {
-			throw new RuntimeException();
+			//throw new RuntimeException();
+			e.printStackTrace();
 		
 		}
 		

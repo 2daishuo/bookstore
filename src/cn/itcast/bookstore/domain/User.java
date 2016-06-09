@@ -8,12 +8,12 @@ public class User {
 	private String username;//ÓÃ»§Ãû
 	private String password;
 	private String email;
-	private String code;
-	private boolean state;
+	
+	
 	private String gender;
 	private String cellphone;
 	private String preferences;
-	private String address;
+	
 	private Date birth; 
 	
 	public String getGender() {
@@ -34,12 +34,7 @@ public class User {
 	public void setPreferences(String preferences) {
 		this.preferences = preferences;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public Date getBirth() {
 		return birth;
 	}
@@ -70,17 +65,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	public boolean isState() {
-		return state;
-	}
-	public void setState(boolean state) {
-		this.state = state;
-	}
-	
+
 }

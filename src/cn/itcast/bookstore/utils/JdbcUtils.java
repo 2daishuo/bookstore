@@ -21,7 +21,7 @@ public class JdbcUtils {
 	}
 	
 	public static Connection getConnection() throws SQLException{
-		System.out.println("将要得到数据库连接");
+		
 		return ds.getConnection();
 	}
 	

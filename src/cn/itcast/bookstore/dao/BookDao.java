@@ -13,6 +13,8 @@ public interface BookDao {
 	public int getTotalRecord(String category_id);
 	public void  deleteBook(String bid);
 	 public void updateBook(Book book);
+	 public List getSearchBook(String search);
+	
 	
 
 }

@@ -63,6 +63,23 @@ public class BookDaoImpl implements BookDao {
 			throw new RuntimeException(e);
 		}
 	}
+	 public List getSearchBook(String search){
+		 
+		
+		 try{
+				QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+				String sql = "select * from book where bname like '%"+search+"%'";
+				List<Book> book=(List<Book>) runner.query(sql,new BeanListHandler(Book.class));
+				for (Book b : book) {
+					System.out.println(b.getBname());
+					
+				}
+				return  (List<Book>) runner.query(sql,new BeanListHandler(Book.class));
+			}catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		 
+	 }
 
 
 	

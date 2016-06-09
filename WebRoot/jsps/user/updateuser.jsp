@@ -10,18 +10,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
+    <style type="text/css">
+    table {   
+    border-spacing: 0;}
     
-    <title>用户详细信息修改</title>    
-     <script type="text/javascript" src="${pageContext.request.contextPath }/js/userdetali.js"> </script>
-	
+    body{
+	padding:0;
+	margin:0;
+	position:center;	
+	letter-spacing:1px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+caption{
+	font-size:20px;
+	font-weight:normal;	
+	padding-top: 20px;
+	height:30px;
 	 
-
-  </head>
-  <!-- onload="start()" -->
-  <body  >
+	 background:#f1eddd;
+	}
+td {
+    border-left: 1px solid #fff;
+  
+    padding: 10px;
+    text-align: left;    
+}
+tr:nth-child(even) {
+     background:#f1eddd;
+	color:#2aff8c;
+}
+ tr:hover *{
+    background: #eeeeee;
+	color:#000;
+}
+tr {
+	background: #b9d86c;
+	color:#fff;
+}
+    </style>
+    <title>用户详细信息修改</title>    
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/userdetali.js"> </script>
+</head>
+  
+  <body>
   <form action="${pageContext.request.contextPath }/client/UpdateuserServlet"method="post" onsubmit="return dosubmit()" id="user">
-   <table width="55%" border="1" >
-    
+   <table width="40%">
+     <caption>用户个人信息修改</caption>
     	<input type="hidden" name="uid" value="${user.uid }">
     	<tr>
     		<td>用户名</td>

@@ -20,16 +20,18 @@ private BusinessServiceImpl service= new BusinessServiceImpl();
 		User form =WebUtils.request2Bean(request, User.class);
 		String confirmPsd = request.getParameter("confirm");
 		form.setUid(WebUtils.makeID());
-		form.setCode(WebUtils.makeID());
+		
 		//输入校验，创建一个map，用来封装错误信息，其中key位表单字段名称，值为错误信息
 		Map<String,String> error= new HashMap<String,String>();
 		//获得表单form中的username，password，email进行校验
 		String username=form.getUsername();
+		
 		if(username==null||username.trim().isEmpty())
 		{
 			error.put("username", "用户名不能为空");	
 		
 		}
+		
 		else if(username.length()<6||username.length()>20){
 			error.put("username", "用户名的长度为6~20");
 			
@@ -65,7 +67,9 @@ private BusinessServiceImpl service= new BusinessServiceImpl();
 		{
 			error.put("email", "Email不能为空");	
 		
-		}else if(!email.matches("\\w+@\\w+\\.\\w+"))
+		}else
+			
+		if(!email.matches("\\w+@\\w+\\.\\w+"))
 		{
 			error.put("email", "邮箱格式错误");
 		}
@@ -98,11 +102,11 @@ private BusinessServiceImpl service= new BusinessServiceImpl();
 			return ;
 		}
 
-		
+		System.out.println(form.getCellphone()+form.getUsername());
 		service.register(form);
 		request.setAttribute("msg", "注册成功");
 		
-		request.getRequestDispatcher("/jsps/user/right.jsp").forward(request, response);
+		request.getRequestDispatcher("/msg.jsp").forward(request, response);
 		
 		
 		

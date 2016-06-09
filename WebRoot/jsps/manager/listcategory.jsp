@@ -12,21 +12,20 @@
 <base href="<%=basePath%>">
 
 <title>列出所有分类</title>
-<script type="text/javascript" src="/js/jquery-1.5.1.min.js" >
-$(function(){  
-alert("ok");   
-
-});
-
-</script>
+ 
   <style type="text/css">
      body{
     background: #f2eede;
+    font-family:arial, sans-serif;
+	font-weight:normal;
+	font-size:12px;
+	
+	letter-spacing: 0.09em;
     }
     table {
         border-collapse: collapse;
         width: 50em;
-        border: 1px solid #666;
+        border: 1px solid #fff;
     }
      caption {
         font-size: 1.2em;
@@ -42,7 +41,7 @@ alert("ok");
     }
       tr:hover {
         background-color:#edf5ff;
-        color:#fff;
+        color:green;
     }
      th, td {
         padding: 0.1em 0.5em;
@@ -53,14 +52,12 @@ alert("ok");
     } 
      .odd {
         background-color:#f2eede;
+          border: 1px solid #fff;
     }
       col#albumCol {
         border: none;
     }
-    #listheader{
-    text-indent: -1000em;
     
-    }
     </style>
     
 
@@ -71,29 +68,29 @@ alert("ok");
 	<table >
 	<caption>显示分类</caption>
 	 <colgroup>
-        <col id="PlaylistCol" />
-        <col id="trackCol" />
-        <col id="artistCol" />
+        <col  />
+        <col />
+        <col  />
         <col id="albumCol" />
     </colgroup>
 	 <thead>
 		<tr  scope="col">
-		<th id="listheader"> &nbsp;</th>
+		
 			<th>分类名称</th>
 			<th>分类描述</th>
-			<th>操作</th>
+			<th colspan="2">操作</th>
 		</tr>
 		</thead>
 		<tbody>
 		<c:forEach var="c" items="${categorys}">
 			<tr class="odd">
-			<td >
-              <span class="numberClass"></span>
-              </td>   
+			  
 				<td>${c.cname}</td>
 				<td>${c.description}</td>
 				<td>
 				<a href="${pageContext.request.contextPath}/manager/CategoryServlet?method=delete&cid=${c.cid}" onclick="return confirm('您真要删除？')"><span style="display:inline-block;width:40px;height:25px;background-color:green;font-size:14px;font-family:'Simsun';text-align:center;color:white;line-height:25px">删除</span></a>
+				</td>
+				<td>
 				<a href="${pageContext.request.contextPath}/manager/CategoryServlet?method=updatepre&cid=${c.cid}""><span style="display:inline-block;width:40px;height:25px;background-color:red;font-size:14px;font-family:'Simsun';text-align:center;color:white;line-height:25px">修改</span></a>
 				</td>
 			</tr>

@@ -132,9 +132,9 @@ background-color:#80A24A;
 <span>图片：</span>
 <input type="file" name="file">
 </label>
-<br>
-<lable>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+
+<lable style="float:right;margin-bottom:25px;">
+<input type="reset" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="submit"  value="添加">
 </lable>
 

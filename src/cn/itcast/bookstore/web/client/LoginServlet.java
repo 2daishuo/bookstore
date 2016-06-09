@@ -21,18 +21,18 @@ public class LoginServlet extends HttpServlet {
 		// System.out.println(resultMsg);
 
 		if (user == null) {
-			request.setAttribute("msg", "密码或用户名错误");
+			request.setAttribute("error", "密码或用户名错误");
 			request.getRequestDispatcher("/jsps/user/login.jsp").forward(
 					request, response);
 
 		} else {
 
 			request.getSession().setAttribute("msg",
-					"登录成功！ 欢迎:" + user.getUsername());
+					user.getUsername());
 			request.getSession().setAttribute("user", user);
 			response.setHeader("refresh",
-					"1;URL=http://127.0.0.1:8080/bookstore/index.jsp");
-			request.getRequestDispatcher("/msg.jsp").forward(request, response);
+					"10;URL=http://127.0.0.1:8080/bookstore/index.jsp");
+			request.getRequestDispatcher("/jsps/user/login.jsp").forward(request, response);
 			// request.getRequestDispatcher("/jsps/user/right.jsp").forward(request,
 			// response);
 		}

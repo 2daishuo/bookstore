@@ -79,6 +79,11 @@ public class BusinessServiceImpl {
 		page.setList(list);
 		return page;
 	}
+public List<Book> getSearchBook(String search) {
+		List book=bdao.getSearchBook(search);
+		
+		return book;
+	}
 	public Page getBookPageDate(String pagenum ,String category_id){
 		
 		int totalrecord=bdao.getTotalRecord(category_id);
@@ -179,5 +184,6 @@ public class BusinessServiceImpl {
 		bdao.updateBook(book);
 		
 	}
+	
 
 }

@@ -14,7 +14,9 @@
 <title>显示所有书籍</title>
 <style type="text/css">
 body {
-	font-size: 12pt;
+	font-family:arial, sans-serif;
+	font-weight:normal;
+	font-size:14px;
 	width: 1100px;
 	height: 700px;
 	
@@ -39,7 +41,7 @@ body {
 
 background-repeat:repeat; -->
 		
-<div style="width: 1100px;height: 640px;border: solid 1px pink;">
+<div style="width: 1100px;height: 540px;border: solid 1px pink;">
 	<c:forEach var="book" items="${page.list}">
 		<div class="icon">
 
