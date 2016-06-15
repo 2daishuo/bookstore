@@ -31,10 +31,9 @@ public class LoginServlet extends HttpServlet {
 					user.getUsername());
 			request.getSession().setAttribute("user", user);
 			response.setHeader("refresh",
-					"10;URL=http://127.0.0.1:8080/bookstore/index.jsp");
+					"3;URL=http://127.0.0.1:8080/bookstore/index.jsp");
 			request.getRequestDispatcher("/jsps/user/login.jsp").forward(request, response);
-			// request.getRequestDispatcher("/jsps/user/right.jsp").forward(request,
-			// response);
+			
 		}
 
 	}

@@ -13,5 +13,7 @@ public interface OrderDao {
 	public List<Order> getAllOrder(int state);
 	public void  updateOrderState(Order order);
 	public List<Order> getMyOrder(User user);
+	public void updateOrderStateIs2(Order order);
 
+	public void confirmOrderIs4(String oid);
 }

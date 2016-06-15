@@ -20,7 +20,7 @@ public class ListOrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String state=request.getParameter("state");
 		BusinessServiceImpl service=new BusinessServiceImpl();
-		List<Order> orders=service.listOrder(state);
+		List<Order> orders=service.listOrder(Integer.parseInt(state));
 		request.setAttribute("orders",orders );
 		request.getRequestDispatcher("/jsps/manager/listorder.jsp").forward(request, response);
 

@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</c:when>
     	<c:when test="${order.state eq 1 }">等待发货</c:when>
     	<c:when test="${order.state eq 2 }">
-    	确认收货</c:when>
+    	<a href="${pageContext.request.contextPath }/client/userorderconfirmgoods?oid=${order.oid}">已发货</a></c:when>
     	<c:when test="${order.state eq 3 }">
     	交易成功
     	</c:when>

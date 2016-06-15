@@ -45,18 +45,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<tr>
     		<td>用户</td>    	
     		<td>邮箱</td>
+    		<td>地址</td>
     	</tr>
     	
     	<tr>
     		<td>${order.user.username }</td>
     		
     		<td>${order.user.email }</td>
+    		<td>${order.address}</td>
     	</tr>
     
     </table>
     
-    <c:if test="${order.state==0}">
-      <a href="${pageContext.request.contextPath }/manager/ConfirmOrderServlet?orderid=${order.oid}">确认发货</a>
+    <c:if test="${order.state==1}">
+      <a href="${pageContext.request.contextPath }/manager/ManagerConfirmOrderStateIs2?orderid=${order.oid}">确认发货</a>
     </c:if>
   </body>
 </html>

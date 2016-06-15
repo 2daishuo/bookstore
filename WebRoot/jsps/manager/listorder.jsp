@@ -35,10 +35,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			<td>${order.user.username }</td>
 	    			<td>${order.ordertime }</td>
 	    			<td>${order.totalprice }</td>
-	    			<td>${order.state==2?'已发货':'未发货' }</td>
+	    			<td>
+	    			<c:choose>
+	    			<c:when test= "${order.state==0}">未付款</c:when>
+	    			<c:when test= "${order.state==1}">未发货</c:when>
+	    			<c:when test= "${order.state==2}">已发货</c:when>
+	    			<c:otherwise>未知</c:otherwise>
+	    			</c:choose>
+	    			
+	    			</td>
 	    			<td>
 	    				<a href="${pageContext.request.contextPath}/manager/OrderDetailServlet?orderid=${order.oid}">查看明细</a>
-	    				<a href="#">删除</a>
+	    				<!-- <a href="#">删除</a> -->
 	    			</td>
     			</tr>
     		</c:forEach>

@@ -130,8 +130,22 @@ public class OrderDaoImpl implements OrderDao {
 
 		try {
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+			String sql = "update orders set state=?,address=? where oid=?";
+			Object params[] = { order.getState(),order.getAddress(), order.getOid() };
+			runner.update(sql, params);
+		} catch (SQLException e) {
+
+			throw new RuntimeException();
+
+		}
+
+	}
+	public void updateOrderStateIs2(Order order) {
+
+		try {
+			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
 			String sql = "update orders set state=? where oid=?";
-			Object params[] = { order.getState(), order.getOid() };
+			Object params[] = { 2, order.getOid() };
 			runner.update(sql, params);
 		} catch (SQLException e) {
 
@@ -141,4 +155,16 @@ public class OrderDaoImpl implements OrderDao {
 
 	}
 
+	public void confirmOrderIs4(String oid){
+		try {
+			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+			String sql = "update orders set state=? where oid=?";
+			Object params[] = {3,oid };
+			runner.update(sql, params);
+		} catch (SQLException e) {
+
+			throw new RuntimeException();
+
+		}
+	}
 }

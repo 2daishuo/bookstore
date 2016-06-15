@@ -42,21 +42,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </table>
 <br/>
-<form method="post" action="javascript:alert('别点了，再点就去银行页面了！');" id="form" target="_parent">
-	收货地址：<input type="text" name="address" size="50" value="北京市海淀区金燕龙大厦2楼216室无敌收"/><br/>
+<form method="post" action="${pageContext.request.contextPath }/manager/ConfirmOrderServlet" id="form" target="_parent">
+	收货地址：<input type="text" name="address" size="50" name="address"/><br/>
 
 	选择银行：<br/>
 	<input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked"/>工商银行
-	<img src="" align="middle"/>
 	<input type="radio" name="pd_FrpId" value="BOC-NET-B2C"/>中国银行
-	<img src="" align="middle"/><br/><br/>
+	<br/><br/>
 	<input type="radio" name="pd_FrpId" value="ABC-NET-B2C"/>农业银行
-	<img src="" align="middle"/>
 	<input type="radio" name="pd_FrpId" value="CCB-NET-B2C"/>建设银行
-	<img src="" align="middle"/><br/><br/>
+	<br/><br/>
 	<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C"/>交通银行
-	<img src="" align="middle"/><br/>
+	<br/><br/>
+	<input type="hidden" value="${order.oid }" name="orderid">
+	<input type="submit" value="付款">
 </form>
-<a id="pay" href="javascript:document.getElementById('form').submit();">提交</a>
+<!-- <a id="pay" href="javascript:document.getElementById('form').submit();">提交</a> -->
   </body>
 </html>

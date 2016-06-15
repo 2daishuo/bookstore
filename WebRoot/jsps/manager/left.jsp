@@ -145,10 +145,10 @@ ul ul li:last-child {
 		<input type="checkbox" name="item" id="item3" />   
 		<label for="item3"> 订单管理 </label>
 		<ul class="options">
-			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=1" target="right" > 查看已发货的订单</a></li>
-			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=0" target="right"> 查看没发货的订单</a></li>
-			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=1" target="right" > 删除长时间没付款的订单</a></li>
-			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=1" target="right" > 查看确认收货的订单</a></li>
+			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=2" target="right" > 查看已发货的订单</a></li>
+			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=1" target="right"> 查看没发货的订单</a></li>
+			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=0" target="right" > 查看未付款的订单</a></li>
+			<li><a href="${pageContext.request.contextPath}/manager/ListOrderServlet?state=3" target="right" > 查看确认收货的订单</a></li>
 		</ul>
 	</li>
  </ul>

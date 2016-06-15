@@ -38,6 +38,7 @@ public class BusinessServiceImpl {
 	public Category findCategory(String id){
 		return dao.find(id);
 	}
+
 	/**得到所有分类**/
 	public List<Category> getAllCategory(){
 		return dao.getAll();
@@ -157,21 +158,27 @@ public List<Book> getSearchBook(String search) {
 		 
 		 return odao.getMyOrder(user);
 	 }
-	public List <Order> listOrder(String state) {
-		return odao.getAllOrder((Boolean.parseBoolean(state)?1:0));
+	public List <Order> listOrder(int state) {
+		return odao.getAllOrder(state);
 		
 	}
 	public Order findOrderDetail(String id){
 		
 		return odao.find(id);
 	}
-	public void confirmOrder(String orderid) {
+	public void confirmOrder(String orderid,String address) {
 		Order order=odao.find(orderid);
 		order.setState(1);
+		order.setAddress(address);
 		odao.updateOrderState(order);
-		
-		
 	}
+	
+	public void confirmOrder(String orderid) {
+		Order order=odao.find(orderid);
+		order.setState(2);
+		odao.updateOrderStateIs2(order);
+	}
+	
 	public Category findCategoryByName(String name) {
 		return dao.findCategoryByName(name);
 		
@@ -182,6 +189,10 @@ public List<Book> getSearchBook(String search) {
 	}
 	public void updateBook(Book book) {
 		bdao.updateBook(book);
+		
+	}
+	public void confirmOrderIs4(String oid) {
+		odao.confirmOrderIs4(oid);
 		
 	}
 	
